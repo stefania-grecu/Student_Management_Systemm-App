@@ -122,20 +122,37 @@ public class Secretariat {
                 for (Curs c : cursuri) {
                     //caut cursul preferat in array-ul de cursuri
                     if (c.getNume().equals(cursPref)) {
-                        // aflu cea mai mica medie a studentilor de la acest curs
-                        double m = 10.0;
-                        for (Student x : c.lista) {
-                            if (x.getMedie() < m)
-                                m = x.getMedie();
+                        //verifica daca cursul apartine aceluiasi program ca si programul de studii a studentului
+                        if (c.getProgram().equals("licenta") && s instanceof StudentLicenta || c.getProgram().equals("master") && s instanceof StudentMaster) {
+                            // aflu cea mai mica medie a studentilor de la acest curs
+                            double m = 10.0;
+                            for (Student x : c.lista) {
+                                if (x.getMedie() < m)
+                                    m = x.getMedie();
+                            }
+                            //daca media studentului este egala cu cea mai mica medie il adaugam la curs
+                            if (s.getMedie() == m && c.lista.size() >= c.capacitateMaxima) {
+                                c.lista.add(s);
+                                ok = 1;
+                            } else if (c.lista.size() < c.capacitateMaxima) {
+                                //altfel il adaugam doar daca capacitatea nu a atins maximul
+                                c.lista.add(s);
+                                ok = 1;
+                            }
                         }
-                        //daca media studentului este egala cu cea mai mica medie il adaugam la curs
-                        if (s.getMedie() == m && c.lista.size() >= c.capacitateMaxima) {
-                            c.lista.add(s);
-                            ok = 1;
-                        } else if (c.lista.size() < c.capacitateMaxima) {
-                            //altfel il adaugam doar daca capacitatea nu a atins maximul
-                            c.lista.add(s);
-                            ok = 1;
+                    }
+                }
+            }
+            //studentul nu a fost repartizat la niciun curs
+            if (ok == 0) {
+                for (Curs c : cursuri) {
+                    if (ok == 0) {
+                        if (c.getProgram().equals("licenta") && s instanceof StudentLicenta || c.getProgram().equals("master") && s instanceof StudentMaster) {
+                            if (c.lista.size() < c.capacitateMaxima) {
+                                //altfel il adaugam doar daca capacitatea nu a atins maximul
+                                c.lista.add(s);
+                                ok = 1;
+                            }
                         }
                     }
                 }

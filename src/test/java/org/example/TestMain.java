@@ -148,4 +148,14 @@ public class TestMain {
         Path ref = Paths.get(antetResources + file + "/" + file + ".ref");
         assertTrue(areFilesEqual(out, ref));
     }
+
+    @Test
+    public void bonus13() throws IOException {
+        String file = "13-test_propriu_bonus";
+        emptyOutput(file);
+        Main.main(new String[]{file});
+        Path out = Paths.get(antetResources + file + "/" + file + ".out");
+        Path ref = Paths.get(antetResources + file + "/" + file + ".ref");
+        assertTrue(areFilesEqual(out, ref));
+    }
 }

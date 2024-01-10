@@ -23,4 +23,7 @@ public class Curs {
     public int getCapacitateMaxima() {
         return capacitateMaxima;
     }
+    public String getProgram() {
+        return program;
+    }
 }

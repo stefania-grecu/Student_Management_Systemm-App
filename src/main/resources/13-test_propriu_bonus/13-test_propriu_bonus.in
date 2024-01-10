@@ -1,0 +1,20 @@
+adauga_student - licenta - Alice
+adauga_student - licenta - Carol
+adauga_student - licenta - Bob
+adauga_student - licenta - Maria
+citeste_mediile
+adauga_curs - licenta - AA - 2
+adauga_curs - master - EG - 1
+posteaza_mediile
+adauga_curs - licenta - SO - 1
+adauga_curs - licenta - RL - 1
+adauga_preferinte - Alice - AA - SO
+adauga_preferinte - Bob - AA - RL
+adauga_preferinte - Carol - AA - SO
+repartizeaza
+posteaza_curs - AA
+posteaza_curs - SO
+posteaza_curs - RL
+posteaza_curs - EG
+posteaza_student - Alice
+posteaza_student - Carol
